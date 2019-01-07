@@ -1,0 +1,148 @@
+
+
+/*Este archivo sirve para la estilización de la página y para ordenar bien sus di-
+ferentes elementos.
+Autor:Manuel Varela.
+Fecha:17 de octubre de 2018.
+*/
+
+
+button {
+	font-size:20pt;
+	float: right;
+	margin:0;
+	padding:10px;
+	border-color:#e1e1e1;
+	background-color:#36752D !important;
+	border-radius:5px;
+}
+label{
+	color: #36752D !important;
+}
+input{
+	border:1px solid #36752D;
+	border-radius: 5px;
+}
+h1{
+	text-align:center;
+}
+
+#menu ul {
+    list-style:none;
+    margin:0;
+    padding:0;width:100%;
+}
+
+#menu ul a {
+    display:block;
+	text-decoration:none;
+    padding:10px;
+
+	color:#fff;
+ /*   font-weight:400;
+    font-size:15px;
+    font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-transform:uppercase;
+	letter-spacing:1px;
+*/
+}
+
+#menu ul li {
+	background-color:#36752D;
+    position:relative;
+    float:left;
+    margin:0;
+    padding:0;
+	width:20%;
+
+}
+#id{
+	text-align:right;
+}
+/*
+#menu ul li:hover {
+    background:#5b78a7;
+}*/
+
+#menu ul ul {
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    padding:0;
+
+}
+
+#menu ul ul li {
+    float:none;
+    width:150px
+}
+
+#menu ul ul a {
+ /*   line-height:120%;
+ */
+    padding:10px 15px;
+}
+
+#menu ul li:hover > ul {
+    display:block;
+	left: 0%;
+}
+section{
+	background-color:LightGray;
+	clear: both;
+}
+.datagrid table { border-collapse: collapse; text-align: left;
+	 width: 100%; }
+	  .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif;
+
+		  background: #fff;
+			 overflow: hidden;
+			  border: 1px solid #36752D;
+	 -webkit-border-radius: 3px;
+	  -moz-border-radius: 3px;
+		 border-radius: 3px; }
+		 .datagrid table td, .datagrid table th {
+			 padding: 3px 10px;
+			  }
+				.datagrid table  th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #36752D), color-stop(1, #275420) );
+					background:-moz-linear-gradient( center top, #36752D 5%, #275420 100% );
+					filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D', endColorstr='#275420');
+					background-color:#36752D;
+					 color:#FFFFFF;
+					  font-size: 15px;
+						 font-weight: bold;
+						  border-left: 1px solid #36752D; }
+
+							 .datagrid table  td { color: #275420; border: 1px solid #C6FFC2;
+								 font-size: 12px;
+								 font-weight: normal;
+								  }
+
+											.datagrid table  td:first-child { border-left: none;
+												 }
+												 .datagrid table  tr:last-child td { border-bottom: none;
+													  }
+														.datagrid table tfoot td div { border-top: 1px solid #36752D;
+															background: #DFFFDE;}
+															.datagrid table tfoot td { padding: 0; font-size: 12px }
+														}
+table button{
+	text-align:left;
+}
+.boton{
+	float:left;
+}
+article,hr{
+	clear:both;
+}
+hr{
+	color:black;
+}
+.centrado{
+	text-align:center;
+	padding:20px !important;
+}
+nav{
+	clear: both;
+}
