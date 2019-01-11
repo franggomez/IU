@@ -1,133 +1,248 @@
--- jrodeiro - 7/10/2017
--- script de creación de la bd, usuario, asignación de privilegios a ese usuario sobre la bd
--- creación de tabla e insert sobre la misma.
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- CREAR LA BD BORRANDOLA SI YA EXISTIESE
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 11-01-2019 a las 18:17:22
+-- Versión del servidor: 10.1.28-MariaDB
+-- Versión de PHP: 7.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
-DROP DATABASE IF EXISTS `IU2018`;
-CREATE DATABASE `IU2018` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+-- Base de datos: `iu2018`
 --
--- SELECCIONAMOS PARA USAR
+CREATE DATABASE IF NOT EXISTS `iu2018` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `iu2018`;
+
+-- --------------------------------------------------------
+
 --
-USE `IU2018`;
+-- Estructura de tabla para la tabla `categoriacontratos`
 --
--- DAMOS PERMISO USO Y BORRAMOS EL USUARIO QUE QUEREMOS CREAR POR SI EXISTE
+
+CREATE TABLE `categoriacontratos` (
+  `idCategoria` int(11) NOT NULL,
+  `categoria` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
-GRANT USAGE ON * . * TO `IU2018`@`localhost`;
-	DROP USER `IU2018`@`localhost`;
+-- Volcado de datos para la tabla `categoriacontratos`
 --
--- CREAMOS EL USUARIO Y LE DAMOS PASSWORD,DAMOS PERMISO DE USO Y DAMOS PERMISOS SOBRE LA BASE DE DATOS.
+
+INSERT INTO `categoriacontratos` (`idCategoria`, `categoria`) VALUES
+(1, 'certificador'),
+(2, 'de mantenimiento'),
+(3, 'de reparacion');
+
+-- --------------------------------------------------------
+
 --
-CREATE USER IF NOT EXISTS `IU2018`@`localhost` IDENTIFIED BY 'pass2018';
-GRANT USAGE ON *.* TO `IU2018`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
-GRANT ALL PRIVILEGES ON `IU2018`.* TO `IU2018`@`localhost` WITH GRANT OPTION;
+-- Estructura de tabla para la tabla `centros`
 --
--- Estructura de tabla para la tabla `datos`
---
-CREATE TABLE IF NOT EXISTS `USUARIOS` (
 
-`login` varchar(15) NOT NULL,
-
-`password` varchar(128) NOT NULL,
-
-`DNI` varchar(9) NOT NULL,
-
-`nombre` varchar(30) NOT NULL,
-
-`apellidos` varchar(50) NOT NULL,
-
-`telefono` varchar(11) NOT NULL,
-
-`email` varchar(60) NOT NULL,
-
-`tipoUsuario` enum('DE CENTRO','AUTORIZADOR','ADMIN') COLLATE latin1_spanish_ci DEFAULT NULL,
-
-PRIMARY KEY (`email`),
-
-UNIQUE KEY `DNI` (`DNI`),
-
-UNIQUE KEY `login` (`login`)
-
+CREATE TABLE `centros` (
+  `idCentro` varchar(60) NOT NULL,
+  `idEmpresa` int(11) NOT NULL,
+  `emailUsuarioCentro` varchar(60) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `EMPRESAS`(
+--
+-- Volcado de datos para la tabla `centros`
+--
 
-    `nombreEmpresa` varchar(60) NOT NULL,
+INSERT INTO `centros` (`idCentro`, `idEmpresa`, `emailUsuarioCentro`) VALUES
+('1', 1, 'manuel@gmail.com'),
+('2', 2, 'manuel@gmail.com');
 
-    PRIMARY KEY (`nombreEmpresa`)
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `contratos`
+--
+
+CREATE TABLE `contratos` (
+  `idContrato` varchar(15) NOT NULL,
+  `importe` int(20) NOT NULL,
+  `fechaFinal` date NOT NULL,
+  `docContrato` varchar(60) NOT NULL,
+  `idCentro` varchar(60) NOT NULL,
+  `idCategoria` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `contratos`
+--
 
-CREATE TABLE IF NOT EXISTS `CENTROS`(
+INSERT INTO `contratos` (`idContrato`, `importe`, `fechaFinal`, `docContrato`, `idCentro`, `idCategoria`) VALUES
+('1', 10000, '2019-01-31', 'aaaaaaaaaaaaaaaaaaaaaaaaaaa', '1', 1),
+('2', 5000, '2019-01-29', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbb', '2', 2);
 
-    `idCentro` varchar(60) NOT NULL,
+-- --------------------------------------------------------
 
-    `nombreEmpresa` varchar(60) NOT NULL,
+--
+-- Estructura de tabla para la tabla `empresas`
+--
 
-    PRIMARY KEY (`idCentro`),
-
-    FOREIGN KEY (`nombreEmpresa`) REFERENCES `EMPRESAS`(`nombreEmpresa`)
-
+CREATE TABLE `empresas` (
+  `idEmpresa` int(11) NOT NULL,
+  `nombreEmpresa` varchar(60) NOT NULL,
+  `tipo` enum('CERTIFICADORA','MANTENEDORA','ARREGLOS','') NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `empresas`
+--
 
-CREATE TABLE IF NOT EXISTS `CONTRATOS` (
+INSERT INTO `empresas` (`idEmpresa`, `nombreEmpresa`, `tipo`) VALUES
+(1, 'Empresa 1', 'CERTIFICADORA'),
+(2, 'Empresa 2', 'MANTENEDORA');
 
-`idContrato` varchar(15) NOT NULL,
+-- --------------------------------------------------------
 
-`importe` int(20) NOT NULL,
+--
+-- Estructura de tabla para la tabla `incidencias`
+--
 
-`fechaFinal` date NOT NULL,
-
-`docContrato` varchar(60) NOT NULL,
-
-`idCentro` varchar(60) NOT NULL,
-
-PRIMARY KEY (`idContrato`),
-
-FOREIGN KEY (`idCentro`) REFERENCES `CENTROS`(`idCentro`)
-
+CREATE TABLE `incidencias` (
+  `numIncidencia` varchar(60) NOT NULL,
+  `fechaIncidencia` date NOT NULL,
+  `estado` enum('NO REALIZADA','REALIZADA') CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
+  `idVisita` varchar(60) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `incidencias`
+--
 
-CREATE TABLE IF NOT EXISTS `VISITAS` (
+INSERT INTO `incidencias` (`numIncidencia`, `fechaIncidencia`, `estado`, `idVisita`) VALUES
+('1', '2019-01-18', 'NO REALIZADA', '1');
 
-`idVisita` varchar(60) NOT NULL,
+-- --------------------------------------------------------
 
-`fechInicio` date NOT NULL,
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
 
-`fechFin` date NOT NULL,
-
-`estado` enum('NO REALIZADA','REALIZADA') COLLATE latin1_spanish_ci DEFAULT NULL,
-
-`idCentro` varchar(60) NOT NULL,
-
-`idContrato` varchar(60) NOT NULL,
-
-PRIMARY KEY (`idVisita`),
-
-FOREIGN KEY (`idCentro`) REFERENCES `CENTROS`(`idCentro`),
-
-FOREIGN KEY (`idContrato`) REFERENCES `CONTRATOS`(`idContrato`)
-
+CREATE TABLE `usuarios` (
+  `login` varchar(15) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `DNI` varchar(9) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `telefono` varchar(11) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `tipoUsuario` enum('DE CENTRO','AUTORIZADOR') CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `usuarios`
+--
 
-CREATE TABLE IF NOT EXISTS `INCIDENCIAS` (
+INSERT INTO `usuarios` (`login`, `password`, `DNI`, `nombre`, `apellidos`, `telefono`, `email`, `tipoUsuario`) VALUES
+('fran', 'fran', '11111111A', 'Francisco', 'Gomez', '600121212', 'fran@gmail.com', 'AUTORIZADOR'),
+('manuel', 'manuel', '22222222B', 'Manuel', 'Varela', '699875421', 'manuel@gmail.com', 'DE CENTRO');
 
-`numIncidencia` varchar(60) NOT NULL,
+-- --------------------------------------------------------
 
-`fechInicio` date NOT NULL,
+--
+-- Estructura de tabla para la tabla `visitas`
+--
 
-`fechFin` date NOT NULL,
-
-`estado` enum('NO REALIZADA','REALIZADA') COLLATE latin1_spanish_ci DEFAULT NULL,
-
-`idVisita` varchar(60) NOT NULL,
-
-PRIMARY KEY (`numIncidencia`),
-
-FOREIGN KEY (`idVisita`) REFERENCES `VISITAS`(`idVisita`)
-
+CREATE TABLE `visitas` (
+  `idVisita` varchar(60) NOT NULL,
+  `fechaVisita` date NOT NULL,
+  `estado` enum('NO REALIZADA','REALIZADA') CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
+  `idCentro` varchar(60) NOT NULL,
+  `idContrato` varchar(60) NOT NULL,
+  `informeVisita` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `visitas`
+--
+
+INSERT INTO `visitas` (`idVisita`, `fechaVisita`, `estado`, `idCentro`, `idContrato`, `informeVisita`) VALUES
+('1', '2019-01-17', 'NO REALIZADA', '1', '1', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'),
+('2', '2019-01-20', 'NO REALIZADA', '2', '2', 'bbbbbbbbbbbbbbbbbbbbb');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `categoriacontratos`
+--
+ALTER TABLE `categoriacontratos`
+  ADD PRIMARY KEY (`idCategoria`);
+
+--
+-- Indices de la tabla `centros`
+--
+ALTER TABLE `centros`
+  ADD PRIMARY KEY (`idCentro`),
+  ADD KEY `nombreEmpresa` (`idEmpresa`);
+
+--
+-- Indices de la tabla `contratos`
+--
+ALTER TABLE `contratos`
+  ADD PRIMARY KEY (`idContrato`),
+  ADD KEY `idCentro` (`idCentro`);
+
+--
+-- Indices de la tabla `empresas`
+--
+ALTER TABLE `empresas`
+  ADD PRIMARY KEY (`idEmpresa`);
+
+--
+-- Indices de la tabla `incidencias`
+--
+ALTER TABLE `incidencias`
+  ADD PRIMARY KEY (`numIncidencia`),
+  ADD KEY `idVisita` (`idVisita`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indices de la tabla `visitas`
+--
+ALTER TABLE `visitas`
+  ADD PRIMARY KEY (`idVisita`),
+  ADD KEY `idCentro` (`idCentro`),
+  ADD KEY `idContrato` (`idContrato`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `categoriacontratos`
+--
+ALTER TABLE `categoriacontratos`
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `empresas`
+--
+ALTER TABLE `empresas`
+  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
