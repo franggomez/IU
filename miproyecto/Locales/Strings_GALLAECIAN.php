@@ -1,0 +1,71 @@
+<!--Jorge Perez Robles 30/11/2018 aqui estan todas las palabras utilizadas en la pagina en gallego
+-->
+<?php 
+$strings = 
+array(
+	'Portal de Gestión' => 'Portal de Xestión',
+	'Usuario no autenticado' => 'Usuario non autenticado',
+	'Login' => 'Login',
+	'idioma' => 'Idioma',
+	'Usuario' => 'Usuario',
+	'Ejemplo' => 'Exemplo',
+	'Otro' => 'Outro',
+	'INGLES' => 'INGLES',
+	'ESPAÑOL' => 'ESPAÑOL',
+	'El login no existe' => 'O login non existe',
+	'Volver' => 'Volver',
+	'La password para este usuario no es correcta' => 'A password para este usuario non é axeitada',
+	'Registro' => 'Rexistro',
+    'Inserción realizada con éxito' => 'Inserción feita con éxito',
+	'Error en la inserción' => 'Error na inserción',
+	'Gestión Asignatura IU' => 'Xestión Asignatura IU',
+	'Hola' => 'Hola',
+	'El usuario ya existe' => 'O usuario xa existe',
+	'Horas:120 Creado por zp1roi hoy es'=>'Horas:120 Creado por zp1roi hoxe é',
+	///////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////
+	'Loterias'=>'Loterias',
+	'Loterias IU'=>'Loterias IU',
+	'Home'=>'Home',
+	'Desconectar'=>'Desconectar',
+	'Si no estas registrado hazlo'=>'Se non estas rexistrado faino',
+	'ya existe un correo con ese boleto'=>'Xa existe un correo con ese boleto',
+	'Borrado realizado'=>'Borrado feito',
+	'Modificacion correcta.'=>'Modificacion correcta.',
+	'Sobre esto'=>'Sobre esto',
+	'Servicios'=>'Servizos',
+	'Contactos'=>'Contactos',
+	'Email'=>'Email',
+	'Nombre'=>'Nome',
+	'Apellidos'=>'Apellidos',
+	'Participacion'=>'Participacion',
+	'Resguardo'=>'Resgardo',
+	'Ingresado'=>'Ingresado',
+	'SI'=>'SI',
+	'NO'=>'NON',
+	'Premio Personal'=>'Premio Persoal',
+	'Pagado'=>'Pagado',
+	'AÑADIR'=>'ENGADIR',
+	'Añadir boleto'=>'Engadir boleto',
+	'Buscar boleto'=>'Buscar boleto',
+	'Buscar'=>'Buscar',
+	'Confirmar'=>'Confirmar',
+	'Editar'=>'Editar',
+    'Editar boleto'=>'Editar boleto',
+    'GALLEGO'=>'GALEGO',
+	'No hay ninguna coincidencia'=>'Non existe ningunha coincidencia',
+	'Ninguna insertada'=>'Ningunha insertada',
+	'Contraseña'=>'Contrasinal',
+	'Telefono'=>'Telefono',
+	'Fecha'=>'Data',
+	'Foto'=>'Foto',
+	'Sexo'=>'Sexo',
+	'Hombre'=>'Home',
+	'Mujer'=>'Muller',
+	'Registrar'=>'Rexistrar',
+	'Registrarse'=>'Rexistrarse'
+	
+)
+;
+?>

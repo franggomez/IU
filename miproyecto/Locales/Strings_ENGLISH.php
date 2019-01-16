@@ -1,0 +1,68 @@
+<!--Jorge Perez Robles 30/11/2018 aqui estan todas las palabras utilizadas en la pagina en ingles
+-->
+<?php 
+$strings = 
+array(
+	'Portal de Gestión' => 'Management website',
+	'Usuario no autenticado' => 'User not logged',
+	'Login' => 'Login', 
+	'idioma' => 'Language',
+	'Usuario' => 'User',
+	'Ejemplo' => 'Example',
+	'Otro' => 'Other',
+	'INGLES' => 'ENGLISH',
+	'ESPAÑOL' => 'SPANISH',
+	'El login no existe' => 'The login dont exists',
+	'Volver' => 'Back',
+	'La password para este usuario no es correcta' => 'Incorrect password for this login',
+	'Registro' => 'Register',
+	'Error en la inserción' => 'Add error',
+	'Inserción realizada con éxito' => 'Success insert',
+	'Gestión Asignatura IU' => 'User Interface Management',
+	'hola' => 'hello',
+	'Horas:120 Creado por zp1roi hoy es'=>'Hours:120 Created by zp1roi today is',
+	/////////////////////////////////////////////////////////////////////////
+	'Loterias'=>'lotteries',
+	'Loterias IU'=>'lotteries IU',
+	'Home'=>'Home',
+	'Desconectar'=>'Exit',
+	'Si no estas registrado hazlo'=>'If you are not registered, do it',
+	'ya existe un correo con ese boleto'=>'there is already an email with that ticket',
+	'Borrado realizado'=>'deleted',
+	'Modificacion correcta.'=>'Modificated',
+	'Sobre esto'=>'About',
+	'Servicios'=>'Services',
+	'Contactos'=>'Contacts',
+	'Email'=>'Email',
+	'Nombre'=>'Name',
+	'Apellidos'=>'Surnames',
+	'Participacion'=>'Participation',
+	'Resguardo'=>'Guard',
+	'Ingresado'=>'Deposit',
+	'SI'=>'Yes',
+	'NO'=>'NO',
+	'Premio Personal'=>'Personal Reward',
+	'Pagado'=>'Paid',
+	'AÑADIR'=>'ADD',
+	'Añadir boleto'=>'Add ticket',
+	'Buscar boleto'=>'Search ticket',
+	'Buscar'=>'Search',
+	'Confirmar'=>'Accept',
+	'Editar'=>'Edit',
+	'Editar boleto'=>'Edit ticket',
+	'GALLEGO'=>'GALICIAN',
+	'Ninguna insertada'=>'None inserted',
+	'Contraseña'=>'Password',
+	'Telefono'=>'Phone',
+	'Fecha'=>'Date',
+	'Foto'=>'Photo',
+	'Sexo'=>'Sex',
+	'Hombre'=>'Male',
+	'Mujer'=>'Female',
+	'Registrar'=>'Register',
+	'Registrarse'=>'Register'
+	
+
+ )
+;
+ ?>
